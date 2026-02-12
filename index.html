@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Card</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+/* Background Video */
+video{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+/* Overlay supaya teks jelas */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(236, 30, 209, 0.3);
+    z-index:-1;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Poppins', sans-serif;
+    padding:15px;
+}
+
+/* Card */
+.card{
+    width:100%;
+    max-width:350px;
+    background:rgba(252, 152, 235, 0.95);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(165, 14, 127, 0.3);
+}
+
+/* Foto */
+.card img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #ff4d6d;
+    box-shadow:0 0 20px #ff8fa3;
+}
+
+/* Judul */
+h1{
+    font-family:'Dancing Script', cursive;
+    color:#ff4d6d;
+}
+
+/* Pesan */
+.hidden-message{
+    margin-top:15px;
+    min-height:60px;
+}
+
+/* Tombol */
+button{
+    margin-top:15px;
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    background:#ff4d6d;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+    width:100%;
+}
+
+button:hover{
+    background:#c9184a;
+}
+
+/* Love animation */
+.love{
+    position:fixed;
+    color:red;
+    font-size:20px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh);}
+    100%{transform:translateY(110vh);}
+}
+
+/* Credit */
+.credit{
+    position:fixed;
+    bottom:10px;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-size:12px;
+    opacity:0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Background Video -->
+<video autoplay muted loop>
+    <!-- GANTI VIDEO DI SINI -->
+    <source src="c:\Users\ACER\Pictures\assets\videoplayback.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div class="card">
+
+    <!-- FOTO -->
+    <img src="c:\Users\ACER\Pictures\assets\WhatsApp Image 2026-02-12 at 12.03.07.jpeg">
+
+    <h1>Happy Valentine’s Day, sayangku!❤️</h1>
+
+    <button onclick="openHeart(this)">Open My Heart</button>
+
+    <div class="hidden-message" id="pesan"></div>
+
+</div>
+
+<div class="credit">
+    Created by Harun Kurniawan ❤️
+</div>
+
+<!-- Musik -->
+<audio id="music" loop>
+    <source src="c:\Users\ACER\Pictures\assets\Jaz_-_Teman_Bahagia_(Official_Audio)_128k.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+let text = "Kamu adalah alasan aku tersenyum setiap hari 🌹 Terima kasih sudah hadir dalam hidupku ❤️ kata bapak Bj Habibi 'jika prosesmu makin sulit, berarti kamu dan pasanganmu sudah berada dijalan yang tepat dan seharusnya. Hanya tetaplah bersama apapun rintangan di depan";
+let index = 0;
+
+function openHeart(btn){
+
+    document.getElementById("music").play();
+
+    btn.innerHTML = "I Love You Sayangku❤️";
+    btn.disabled = true;
+
+    typingEffect();
+    startLove();
+}
+
+/* Typing effect */
+function typingEffect(){
+    let pesan = document.getElementById("pesan");
+
+    if(index < text.length){
+        pesan.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typingEffect, 50);
+    }
+}
+
+/* Love animation */
+function startLove(){
+    setInterval(()=>{
+        const love=document.createElement("div");
+        love.classList.add("love");
+        love.innerHTML="❤️";
+        love.style.left=Math.random()*100+"vw";
+        love.style.animationDuration=(Math.random()*3+2)+"s";
+        document.body.appendChild(love);
+
+        setTimeout(()=>{
+            love.remove();
+        },5000);
+    },300);
+}
+
+</script>
+
+</body>
+</html>
