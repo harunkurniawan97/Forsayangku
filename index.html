@@ -20,7 +20,7 @@ video{
     z-index:-2;
 }
 
-/* Overlay supaya teks jelas */
+/* Overlay */
 .overlay{
     position:fixed;
     top:0;
@@ -123,9 +123,8 @@ button:hover{
 <body>
 
 <!-- Background Video -->
-<video autoplay muted loop>
-    <!-- GANTI VIDEO DI SINI -->
-    <source src="./assets/video.mp4" type="video/mp4">
+<video autoplay muted loop playsinline>
+    <source src="assets/video.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
@@ -133,9 +132,9 @@ button:hover{
 <div class="card">
 
     <!-- FOTO -->
-    <img src="./assets/foto.jpeg">
+    <img src="assets/foto.jpeg">
 
-    <h1>Happy Valentine’s Day, sayangku!❤️</h1>
+    <h1>Happy Valentine’s Day, sayangku ❤️</h1>
 
     <button onclick="openHeart(this)">Open My Heart</button>
 
@@ -149,19 +148,19 @@ button:hover{
 
 <!-- Musik -->
 <audio id="music" loop>
-    <source src="./assets/musik.mp3" type="audio/mp3">
+    <source src="assets/musik.mp3" type="audio/mp3">
 </audio>
 
 <script>
 
-let text = "Kamu adalah alasan aku tersenyum setiap hari 🌹 Terima kasih sudah hadir dalam hidupku ❤️ kata bapak Bj Habibi 'jika prosesmu makin sulit, berarti kamu dan pasanganmu sudah berada dijalan yang tepat dan seharusnya. Hanya tetaplah bersama apapun rintangan di depan";
+let text = "Kamu adalah alasan aku tersenyum setiap hari 🌹 Terima kasih sudah hadir dalam hidupku ❤️ Kata B.J Habibie: 'Jika prosesmu makin sulit, berarti kamu dan pasanganmu sudah berada di jalan yang tepat. Tetaplah bersama apapun rintangan di depan.'";
 let index = 0;
 
 function openHeart(btn){
 
     document.getElementById("music").play();
 
-    btn.innerHTML = "I Love You Sayangku❤️";
+    btn.innerHTML = "I Love You Sayangku ❤️";
     btn.disabled = true;
 
     typingEffect();
@@ -198,5 +197,4 @@ function startLove(){
 </script>
 
 </body>
-
 </html>
